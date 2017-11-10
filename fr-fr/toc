@@ -1,0 +1,18 @@
+- name: Home
+  href: index.md
+- name: Pour commencer
+  href: getting-started.md
+- name: Contributeurs
+  href: contributors.md
+- name: Smart Contract
+  href: sc/introduction.md
+  items:
+      - name: Introduction
+        href: sc/introduction.md
+      - name: White Paper
+        href: sc/white-paper.md
+- name: NEO Node
+  href: node/introduction.md
+  items:
+    - name: Introduction
+      href: node/introduction.md

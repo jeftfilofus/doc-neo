@@ -1,0 +1,7 @@
+# Pour commencer
+
+Ce tutoriel présentera le développement de NEO en deux parties.
+ 
+1. Construire des chaînes privées basées sur des nœuds NEO et interagir avec la blockchain via API / SDK. [Cliquez ici](node/introduction.md).
+
+2. Rédaction et compilation de "Smart Contract" NEO à déployer dans la blockchain pour une utilisation. [Cliquez ici](sc/introduction.md).
