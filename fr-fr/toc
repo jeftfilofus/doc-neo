@@ -16,3 +16,7 @@
   items:
     - name: Introduction
       href: node/introduction.md
+    - name: Protocole réseau
+      href: node/network-protocol.md
+    - name: Test réseau
+      href: node/testnet.md

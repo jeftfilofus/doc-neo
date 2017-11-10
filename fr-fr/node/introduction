@@ -1,0 +1,55 @@
+# Introduction au noeud NEO
+
+Les nœuds qui stockent toute la blockchain sont appelés "full-nodes". Ils sont connectés à la blockchain via un réseau P2P. Tous les nœuds du réseau blockchain sont égaux, ils agissent à la fois comme interface client et comme serveur.
+
+Il existe deux programmes de "full-node". Le premier est Neo-GUI, il a toutes les fonctions de base d'un "user-client", y compris une interface utilisateur graphique et est destiné aux utilisateurs NEO. Le second est Neo-CLI, il fournit une API externe pour les fonctions de base de gestion de portefeuille et est destiné aux développeurs NEO. Cela aidera d'autres nœuds à atteindre un consensus avec le réseau et sera impliqué dans la génération de nouveaux blocs.
+
+Le NEO [Protocole réseau] (network-protocol.md) fournira une API de bas niveau pour certains types de transactions qui ne sont pas actuellement pris en charge par la CLI, comme la revendication de GAS ou l'envoi de NEO sans portefeuille ouvert.
+
+## Adresse de téléchargement du noeud NEO
+
+|      | Neo-GUI                        | Neo-CLI                        |
+| ---- | ---------------------------------------- | ---------------------------------------- |
+| Releases | [Official website](https://www.neo.org/download) or [Github](https://github.com/neo-project/neo-gui/releases) | [Github](https://github.com/neo-project/neo-cli/releases) |
+| Code Source | [Github](https://github.com/neo-project/neo-gui) | [Github](https://github.com/neo-project/neo-cli) |
+
+## Comparaison des fonctions des noeuds GUI et CLI
+
+|           | GUI  | CLI  |
+| --------- | ---- | ---- |
+| Interface graphique | ✅    |      |
+| Interface de ligne de commande |      | ✅    |
+| Création de portefeuille | ✅    | ✅    |
+| Accès au portefeuille | ✅    | ✅  |
+| Reconstruction d'un portefeuille depuis un index | ✅    | ✅    |
+| Afficher toutes les paires de clés | ✅    | ✅    |
+| Importer/Exporter une pair de clés | ✅    | ✅    |
+| Montrer toutes les adresses | ✅    | ✅    |
+| Montrer tous les actifs | ✅    | ✅    |
+| Créer une adresse | ✅    | ✅    |
+| Transfert | ✅    | ✅    |
+| Transaction (échange d'actifs)  | ✅    |      |
+| Créer un contrat à signatures multipartite | ✅    |      |
+| Créer un smart contract personnalisé| ✅    |      |
+| Signature | ✅    |      |
+| Noeud de consensus d'élection | ✅    |      |
+| Vote | ✅    |      |
+| REnregistrer des actifs | ✅    |      |
+| Distribution d'actifs | ✅    |      |
+| Extraction ode NEO | ✅    |      |
+| Generation d'addresses via BATCH  |      | ✅    |
+| JSON-RPC |      | ✅    |
+| Le consensus des blocs participants |      | ✅    |
+
+## Port description
+
+Si vous souhaitez qu'un programme externe accède à l'API du noeud, un port "open firewall" est requis. Vous trouverez ci-dessous une description de port pouvant être entièrement ouvert ou ouvert à la demande.
+
+|                    | Main Net | Test Net |
+| ------------------ | ------------ | ------------- |
+| JSON-RPC via HTTPS | 10331        | 20331         |
+| JSON-RPC via HTTP  | 10332        | 20332         |
+| P2P via TCP        | 10333        | 20333         |
+| P2P via WebSocket  | 10334        | 20334         |
+
+Pour plus d'informations, reportez-vous à [test réseau] (testnet.md).
