@@ -20,3 +20,5 @@
       href: node/network-protocol.md
     - name: Test réseau
       href: node/testnet.md
+    - name: White paper
+      href: node/whitepaper.md

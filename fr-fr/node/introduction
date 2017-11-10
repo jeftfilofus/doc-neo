@@ -23,7 +23,7 @@ Le NEO [Protocole réseau] (network-protocol.md) fournira une API de bas niveau 
 | Accès au portefeuille | ✅    | ✅  |
 | Reconstruction d'un portefeuille depuis un index | ✅    | ✅    |
 | Afficher toutes les paires de clés | ✅    | ✅    |
-| Importer/Exporter une pair de clés | ✅    | ✅    |
+| Importer/Exporter une paire de clés | ✅    | ✅    |
 | Montrer toutes les adresses | ✅    | ✅    |
 | Montrer tous les actifs | ✅    | ✅    |
 | Créer une adresse | ✅    | ✅    |
