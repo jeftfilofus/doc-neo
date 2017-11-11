@@ -65,36 +65,37 @@ Type de données
    |?*?|Transactions|tx[]|Liste des transactions|
 
    Lors du calcul de la valeur de hachage du bloc, au lieu de calculer le bloc entier, seuls les sept premiers champs de la tête de bloc seront calculés: PrevBlock, MerkleRoot, horodatage et height, le nonce, NextMiner. Puisque MerkleRoot contient déjà la valeur de hachage de toutes les transactions, la modification de transaction influencera la valeur de hachage du bloc.
-   Data structure of block head:
+   
+   Structure de données de la tête de bloc:
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |4|Version|uint32|Version of the block which is 0 for now|
-   |32|PrevBlock|uint256|Hash value of the previous block|
-   |32|MerkleRoot|uint256|Root hash of a transaction list|
-   |4|Timestamp|uint32|Time-stamp|
-   |4|Height|uint32|Height of block|
-   |8|Nonce|uint64|Random number|
-   |20|NextMiner|uint160|Contract address of next miner|
-   |1|-|uint8|It's fixed to 1|
-   |?|Script|script|Script used to validate the block|
-   |1|-|uint8|It's fixed to 0|
+   |4|Version|uint32|Version du bloc qui est 0 pour le moment|
+   |32|PrevBlock|uint256|Valeur de hachage du bloc précédent|
+   |32|MerkleRoot|uint256|"Root hash" d'une liste de transactions|
+   |4|Timestamp|uint32|Horodatage|
+   |4|Height|uint32|Hauteur du block|
+   |8|Nonce|uint64|Nombre aléatoire|
+   |20|NextMiner|uint160|Adresse du contrat du prochain miner|
+   |1|-|uint8|fixé à 1|
+   |?|Script|script|Script utilisé pour valider le bloc|
+   |1|-|uint8|Fixé à 0|
 
-   The time-stamp of each block must be later than previous block's time stamp. Generally the difference of two block's time stamp is about 15 seconds and imprecision is allowed. The height of the block must be exactly equal to the height of the previous block plus 1.
+   L'horodatage de chaque bloc doit être antérieur à l'horodatage du bloc précédent. Généralement, la différence d'horodatage de deux blocs est d'environ 15 secondes et l'imprécision est autorisée. La hauteur du bloc doit être exactement égale à la hauteur du bloc précédent plus 1.
 
 1. Transaction
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |1|Type|uint8|Type of transaction|
-   |1|Version|uint8|Trading version, currently 0|
-   |?|-|-|Data specific to transaction types|
-   |?*?|Attributes|tx_attr[]|Additional features that the transaction has|
-   |34*?|Inputs|tx_in[]|Input|
-   |60*?|Outputs|tx_out[]|Output|
-   |?*?|Scripts|script[]|List of scripts used to validate the transaction|
+   |1|Type|uint8|Type de transaction|
+   |1|Version|uint8|"Trading version", actuellement 0|
+   |?|-|-|Données spécifiques aux types d'opérations|
+   |?*?|Attributes|tx_attr[]|Caractéristiques supplémentaires que la transaction a|
+   |34*?|Inputs|tx_in[]|Entrée|
+   |60*?|Outputs|tx_out[]|Sortie|
+   |?*?|Scripts|script[]|Liste des scripts utilisés pour valider la transaction|
 
-   All processes in NEO system are recorded as transactions. There are several types of transactions:
+   Tous les processus du système NEO sont enregistrés en tant que transactions. Il y a plusieurs types de transactions:
 
    |Value|Name|System Fee|Description|
    |---|---|---|---|
