@@ -207,170 +207,170 @@ Type de données
 
    Pour CertUrl, DescriptionUrl, Description, Remarque série, la longueur des données doit être clairement définie, et la longueur ne doit pas dépasser 255;
 
-1. Input of Transaction
+1. "Input" d'une transaction
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |32|PrevHash|uint256|Previous transaction's hash|
-   |2|PrevIndex|uint16|Previous transaction's index|
+   |32|PrevHash|uint256|Hash de la transaction précédente|
+   |2|PrevIndex|uint16|Index de la transaction précédente|
 
-1. Output of Transaction
+1. "Output" d'une transaction
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |32|AssetId|uint256|Asset id|
-   |8|Value|int64|Value|
-   |20|ScriptHash|uint160|Address of remittee|
+   |32|AssetId|uint256|Identifiant de l'actif|
+   |8|Value|int64|Valeur|
+   |20|ScriptHash|uint160|Address du membre|
 
-   Each transaction can have outputs up to 65536.
+   Chaque transaction peut avoir jusqu'à 65536 sorties.
 
-1. Validation Script
+1. Script de validation
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |?|StackScript|uint8[]|Stack script code|
-   |?|RedeemScript|uint8[]|Contract script code|
+   |?|StackScript|uint8[]|Pile script code|
+   |?|RedeemScript|uint8[]|Contrat script code|
 
-   Stack script can only be used for the PUSH operations, which is used to push data like signatures into the stack. The script interpreter will execute the stack script code first, and then execute the contract script code.
+   Le script de pile ne peut être utilisé que pour les opérations PUSH, qui sont utilisées pour pousser des données comme des signatures dans la pile. L'interpréteur de script exécutera d'abord le code de script de la pile, puis exécutera le code du script de contrat.
 
-   In a transaction, the hash value of the contract script code must be consistent with the transaction output, which is part of the validation. The later section will describe the execution process of the script in detail.
+   Dans une transaction, la valeur de hachage du code du script de contrat doit être cohérente avec la sortie de la transaction, qui fait partie de la validation. La section suivante décrira le processus d'exécution du script en détail.
 
-Network Message
+Messages du réseau
 -------
 
-All network messages are sent in this structure:
+Tous les messages réseau sont envoyés dans cette structure:
 
-|Size|Field|DataType|Description|
+|Taille|Champ|Type de donnée|Description|
 |---|---|---|---|
-|4|Magic|uint32|Protocol ID|
-|12|Command|char[12]|Command|
-|4|length|uint32|Length of payload|
-|4|Checksum|uint32|Checksum|
-|length|Payload|uint8[length]|Content of message|
+|4|Magic|uint32|ID du protocole|
+|12|Command|char[12]|Commande|
+|4|length|uint32|Longueur de la charge utile|
+|4|Checksum|uint32|"Checksum"|
+|length|Payload|uint8[length]|Contenu du message|
 
-Defined Magic value:
+Valeur magique définie:
 
-|Value|Description|
+|Valeur|Description|
 |---|---|
-|0x00746e41|Production mode|
-|0x74746e41|Test mode|
+|0x00746e41|Mode production|
+|0x74746e41|Mode Test|
 
-Command is utf8 code, of which the length is 12 bytes, the extra part is filled with 0.
+La commande est un code utf8, dont la longueur est de 12 bytes, la partie supplémentaire est remplie avec 0.
 
-Checksum is the first 4 bytes of the value that two times SHA256 hash of the Payload.
+Checksum est les premier 4 byte de la valeur de deux fois la fonction hachage SHA256 de la charge utile.
 
-According to different orders Payload has different detailed format, see below:
+Selon différentes commandes la charge utile a différents formats détaillés, voir ci-dessous:
 
 1. version
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |4|Version|uint32|Version of protocol, 0 for now|
-   |8|Services|uint64|The service provided by the node is currently 1|
-   |4|Timestamp|uint32|Current time|
-   |2|Port|uint16|Port that the server is listening on, it's 0 if not used.|
-   |4|Nonce|uint32|It's used to distinguish the node from public IP|
-   |?|UserAgent|varstr|Client ID|
-   |4|StartHeight|uint32|Height of block chain|
-   |1|Relay|bool|Whether to receive and forward
+   |4|Version|uint32|Version du protocole, 0 pour le moment|
+   |8|Services|uint64|Le service fourni par le noeud est actuellement 1|
+   |4|Timestamp|uint32|Heure actuelle|
+   |2|Port|uint16|Port que le serveur écoute, 0 s'il n'est pas utilisé|
+   |4|Nonce|uint32|Permet de distinguer le noeud de l'adresse IP publique|
+   |?|UserAgent|varstr|ID client|
+   |4|StartHeight|uint32|Hauteur de la chaîne de blocs|
+   |1|Relay|bool|Que recevoir et transférer|
 
 
-   When a node receives a connection request, it declares its version immediately. There will be no other communication until both sides are getting versions of each other.
+   Lorsqu'un nœud reçoit une requête de connexion, il déclare sa version immédiatement. Il n'y aura pas d'autre communication avant que les deux parties n'obtiennent la version les unes des autres.
 
 1. verack
 
-   When a node receives the version message, it replies with a verack immediately.
+   Lorsqu'un nœud reçoit le message de la version, il répond immédiatement avec un verack.
 
-   This message has no payload.
+   Ce message n'a aucune charge utile.
 
 1. getaddr
 
-   Make requests to a node for a batch of new active nodes in order to increase the number of connections.
+   Faire des demandes à un nœud pour un lot de nouveaux nœuds actifs afin d'augmenter le nombre de connexions.
 
-   This message has no payload.
+   Ce message n'a aucune charge utile.
 
 1. addr
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |30*?|AddressList|net_addr[]|Other nodes' address in network|
+   |30*?|AddressList|net_addr[]|L'adresse d'autres noeuds dans le réseau|
 
-   After receiving the getaddr message, the node returns an addr message as response and provides information about the known nodes on the network.
+   Après avoir reçu le message getaddr, le nœud renvoie un message addr comme réponse et fournit des informations sur les nœuds connus sur le réseau.
 
 1. getheaders
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |32*?|HashStart|uint256[]|Hash of latest block that node requests|
-   |32|HashStop|uint256|Hash of last block that node requests|
+   |32*?|HashStart|uint256[]|Hash du dernier bloc que le noeud demande|
+   |32|HashStop|uint256|Hash du dernier bloc demandé par le noeud|
 
-   Make requests to a node for at most 2000 blocks’ header packages that contain HashStart to HashStop. To get the block hash after that, you need to resend the getheaders message. This message is used to quickly download the blockchain which does not contain the transactions.
+   Envoyez des demandes à un nœud pour au plus 2000 paquets d'en-tête de blocs contenant HashStart à HashStop. Pour obtenir le hachage du bloc après cela, vous devez renvoyer le message getheaders. Ce message est utilisé pour télécharger rapidement la blockchain qui ne contient pas les transactions.
 
 1. headers
 
-   |Size|Field|DataType|Description|
+   |Taille|CHamp|Type de données|Description|
    |---|---|---|---|
-   |?*?|Headers|header[]|Head of the block|
+   |?*?|Headers|header[]|En tête du bloc|
 
-   After receiving the getheaders message, the node returns a header message as response and provides information about the known nodes on the network.
-
+   Après réception du message getheaders, le nœud renvoie un message d'en-tête en réponse et fournit des informations sur les nœuds connus sur le réseau.
+   
 1. getblocks
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |32*?|HashStart|uint256[]|Hash of latest block that node requests|
-   |32|HashStop|uint256|Hash of last block that node requests|
+   |32*?|HashStart|uint256[]|Hash du dernier bloc que le noeud demande|
+   |32|HashStop|uint256|Hachure du dernier bloc demandé par le noeud|
 
-   Make requests to a node for inv message which starts from HashStart to HashStop. The number of blocks which starts from HashStart to HashStop is up to 500. If you want to get block hash more than that, you need to resend getblocks message.
+   Faire des demandes à un nœud pour un message "inv" qui commence à partir de HashStart à HashStop. Le nombre de blocs qui va de HashStart à HashStop peut atteindre 500. Si vous voulez obtenir plus de hash, vous devez renvoyer le message getblocks.
 
 1. inv
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |36*?|Inventories|inv_vect[]|Data of inventories|
+   |36*?|Inventories|inv_vect[]|Données sur les stocks|
 
-   The node can broadcast the object information it owns by this message. The message can be sent automatically or can be used to answer getblocks messages.
+   Le nœud peut diffuser les informations d'objet qu'il possède par ce message. Le message peut être envoyé automatiquement ou peut être utilisé pour répondre aux messages getblocks
 
-   Object information is included in the list:
+   Les informations sur l'objet sont incluses dans la liste:
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |4|Type|uint32|Type of object|
-   |32|Hash|uint256|Hash of object|
+   |4|Type|uint32|Type d'objet|
+   |32|Hash|uint256|Hash de l'objet|
 
-   Object types:
+   Types d'objets:
 
-   |Value|Name|Description|
+   |Valeur|Nom|Description|
    |---|---|---|
    |0x01|TX|Transaction|
-   |0x02|Block|Block|
-   |0xe0|Consensus|Consensus data|
+   |0x02|Block|Bloc|
+   |0xe0|Consensus|données de consensus|
 
 1. getdata
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |36*?|Inventories|inv_vect[]|Data of inventories|
+   |36*?|Inventories|inv_vect[]|Données sur les stocks|
 
-   To request a specified object from a node: It is usually sent after the inv packet is received and the known element removed.
+   Pour demander un objet spécifié à partir d'un noeud: Il est généralement envoyé après la réception du paquet inv et la suppression de l'élément connu.
 
 1. block
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
-   |?|Block|block|Block|
+   |?|Block|block|Bloc|
 
-   Sending a block to a node, to respond to the getdata message.
+   Envoyer un bloc à un noeud pour répondre au message getdata.
 
 1. tx
 
-   |Size|Field|DataType|Description|
+   |Taille|Champ|Type de données|Description|
    |---|---|---|---|
    |?|Transaction|tx|Transaction|
 
-   Sending a transaction to a node, to respond to the getdata message.
+   Envoyer une transaction à un noeud, pour répondre au message getdata.
 
-   |Size|field|data type|description|
+   |Taille|Champ|Type de données|description|
    |----|---------|--------- |----------------- |
-   |32 *?|HashStart|uint256[]|Node is known as the latest block hash|
-   |32|hashStop|uint256|Request the last block|
+   |32 *?|HashStart|uint256[]|Le noeud qui est connu comme le dernier hachage de bloc|
+   |32|hashStop|uint256|Demander le dernier bloc|
