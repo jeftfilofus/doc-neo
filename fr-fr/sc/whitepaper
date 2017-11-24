@@ -10,7 +10,7 @@ En 2014, un adolescent appelé Vitalik Buterin a publié Ethereum, qui fournit u
 
 NEO blockchain est une plate-forme numérique d'actifs et d'applications, qui fournit un nouveau système de "Smart Contract", NeoContract. Au cœur de la plateforme Neo, le réseau fournit de multiples fonctions telles que les capacités numériques, NeoAsset et l'identité numérique NeoID permettant aux utilisateurs de s'engager facilement dans des activités numériques, et ne se limitent plus à l'émission de "Tokens" natifs sur la blockchain.
 
-Cet article présente les fonctionnalités de NeoContract et explore les détails non techniques. Veuillez vous référer à la documentation technique pour les détails techniques: [docs.neo.org] (http://docs.neo.org).
+Cet article présente les fonctionnalités de NeoContract et explore les détails non techniques. Veuillez-vous référer à la documentation technique pour les détails techniques: [docs.neo.org] (http://docs.neo.org).
 
 ## 2. Caractéristiques
 
@@ -26,7 +26,7 @@ L'obtention de l'heure système est une fonction système très courante, qui pe
 
 #### 2.1.2 Aléatoire
 
-De nombreux programmes de "Smart Contract", tels que les contrats de jeu et de petits jeux, utilisent des fonctions de nombres aléatoires. Cependant, les fonctions de nombres aléatoires sont une fonction non déterministe typique, et chaque appel système obtiendra des résultats différents. Dans un système distribué, il existe plusieurs façons de résoudre ce problème: Premièrement, la même graine aléatoire peut être utilisée pour tous les noeuds, de façon à ce que la séquence de retour de la fonction aléatoire entière est déterministe, mais cette méthode expose le résultat aléatoire entier à l'avance réduisant considérablement la valeur pratique du nombre aléatoire. Une autre solution possible consiste à laisser tous les nœuds communiquer de manière collaborative pour générer des nombres aléatoires. Cela peut être réalisé en utilisant des techniques cryptographiques pour produire un nombre aléatoire équitable, mais l'inconvénient réside dans la très mauvaise performance, et le besoin d'une surcharge de communication supplémentaire. Un fournisseur centralisé de nombres aléatoires peut être utilisé pour générer des nombres aléatoires qui garantissent la cohérence et la performance, mais l'inconvénient de cette approche est évident; Les utilisateurs devront faire confiance inconditionnellement au fournisseur de numéros centralisé.
+De nombreux programmes de "Smart Contract", tels que les contrats de jeu et de petits jeux, utilisent des fonctions de nombres aléatoires. Cependant, les fonctions de nombres aléatoires sont une fonction non déterministe typique, et chaque appel système obtiendra des résultats différents. Dans un système distribué, il existe plusieurs façons de résoudre ce problème: Premièrement, la même graine aléatoire peut être utilisée pour tous les nœuds, de façon à ce que la séquence de retour de la fonction aléatoire entière est déterministe, mais cette méthode expose le résultat aléatoire entier à l'avance réduisant considérablement la valeur pratique du nombre aléatoire. Une autre solution possible consiste à laisser tous les nœuds communiquer de manière collaborative pour générer des nombres aléatoires. Cela peut être réalisé en utilisant des techniques cryptographiques pour produire un nombre aléatoire équitable, mais l'inconvénient réside dans la très mauvaise performance, et le besoin d'une surcharge de communication supplémentaire. Un fournisseur centralisé de nombres aléatoires peut être utilisé pour générer des nombres aléatoires qui garantissent la cohérence et la performance, mais l'inconvénient de cette approche est évident; Les utilisateurs devront faire confiance inconditionnellement au fournisseur de numéros centralisé.
 
 Il existe deux façons de générer un nombre aléatoire dans NEO:
 
@@ -42,7 +42,7 @@ Pour les "Smart Contract", NEO fournit deux types de sources de données déterm
 
 1. **Blockchain Ledger**
 
-   La procédure de contrat peut accéder à toutes les données sur l'ensemble de la chaîne via des services interopérables, y compris des blocs complets et des transactions, et chacun de leurs champs. Les données sur les blocs sont déterministes et cohérentes, de sorte qu'elles peuvent être accessibles en toute sécurité par des "Smart COntract". 
+   La procédure de contrat peut accéder à toutes les données sur l'ensemble de la chaîne via des services interopérables, y compris des blocs complets et des transactions, et chacun de leurs champs. Les données sur les blocs sont déterministes et cohérentes, de sorte qu'elles peuvent être accessibles en toute sécurité par des "Smart Contract". 
     
 2. **Espace de stockage du contrat**
 
@@ -52,7 +52,7 @@ Pour les situations où l'accès à des données non-blockchain est requis, NEO 
 
 #### 2.1.4 Appel de contrat
 
-Les "Smart COntract" de NeoContract peuvent s'appeler entre eux, mais ne peuvent pas être appelés de manière récursive. La récursivité peut être obtenue dans le cadre du contrat, mais elle ne peut pas franchir les limites du contrat actuel. De plus, la relation d'appel entre les contrats doit être statique: La cible ne peut pas être spécifiée lors de l'exécution. Cela permet au comportement du programme d'être entièrement déterminé avant l'exécution, et sa relation d'appel d'être entièrement définie avant de pouvoir s'exécuter. Sur cette base, plusieurs contrats peuvent être partitionnés dynamiquement pour réaliser une exécution parallèle.
+Les "Smart Contract" de NeoContract peuvent s'appeler entre eux, mais ne peuvent pas être appelés de manière récursive. La récursivité peut être obtenue dans le cadre du contrat, mais elle ne peut pas franchir les limites du contrat actuel. De plus, la relation d'appel entre les contrats doit être statique: La cible ne peut pas être spécifiée lors de l'exécution. Cela permet au comportement du programme d'être entièrement déterminé avant l'exécution, et sa relation d'appel d'être entièrement définie avant de pouvoir s'exécuter. Sur cette base, plusieurs contrats peuvent être partitionnés dynamiquement pour réaliser une exécution parallèle.
 
 ### 2.2 Haute performance
 
@@ -61,9 +61,9 @@ L'environnement d'exécution d'un "Smart Contract" joue un rôle essentiel dans 
 1. Vitesse d'exécution de l'instruction
 2. Vitesse de démarrage de l'environnement d'exécution lui-même
 
-Pour les "SMart Contract", l'environnement d'exécution est souvent plus important que la vitesse d'exécution de l'instruction. Les "Smart Contract" sont plus impliqués dans le fonctionnement des logiques IO, pour déterminer les instructions, où l'implémentation de ces instructions peut facilement être optimisée. Chaque fois que le "Smart Contract" est appelé, il doit démarrer une nouvelle machine virtuelle / conteneur. Par conséquent, la vitesse d'exécution de l'environnement lui-même (démarrage d'une machine / conteneur virtuel) a un impact plus important sur les performances du système de "Smart Contract".
+Pour les "Smart Contract", l'environnement d'exécution est souvent plus important que la vitesse d'exécution de l'instruction. Les "Smart Contract" sont plus impliqués dans le fonctionnement des logiques IO, pour déterminer les instructions, où l'implémentation de ces instructions peut facilement être optimisée. Chaque fois que le "Smart Contract" est appelé, il doit démarrer une nouvelle machine virtuelle / conteneur. Par conséquent, la vitesse d'exécution de l'environnement lui-même (démarrage d'une machine / conteneur virtuel) a un impact plus important sur les performances du système de "Smart Contract".
 
-NEO utilise une NeoVM légere (NEO Virtual Machine) comme environnement d'exécution du "Smart Contract", qui démarre très rapidement et prend très peu de ressources, parfait pour les programmes courts comme les "Smart Contract". L'utilisation de la compilation et de la mise en cache de "Smart Contracts" Hotspot avec JIT (compilateur en temps réel) peut améliorer considérablement l'efficacité des machines virtuelles.
+NEO utilise une NeoVM légere (NEO Virtual Machine) comme environnement d'exécution du "Smart Contract", qui démarre très rapidement et prend très peu de ressources, parfait pour les programmes courts comme les "Smart Contracts". L'utilisation de la compilation et de la mise en cache de "Smart Contracts" Hotspot avec JIT (compilateur en temps réel) peut améliorer considérablement l'efficacité des machines virtuelles.
 
 ### 2.3 Évolutivité
 
@@ -71,7 +71,7 @@ NEO utilise une NeoVM légere (NEO Virtual Machine) comme environnement d'exécu
 
 Lorsque l'on discute de l'évolutivité d'un système, il implique deux domaines principaux: la mise à l'échelle verticale et la mise à l'échelle horizontale. La mise à l'échelle verticale fait référence à l'optimisation du flux du temps de traitement, permettant au système de tirer pleinement parti de la capacité de l'équipement existant. Avec cette approche, les limites du système sont facilement atteintes, car la capacité de traitement en série est basée sur la limite matérielle d'un seul appareil. Lorsque nous devons adapter le système, y a-t-il un moyen de transformer le système en série en un système parallèle? Théoriquement, nous n'aurons besoin que d'augmenter le nombre de périphériques, et nous serons en mesure d'atteindre une évolutivité quasi illimitée. Pouvons-nous éventuellement réaliser une mise à l'échelle illimitée dans les réseaux distribués de la "blockchain"? En d'autres termes, la blockchain peut-elle exécuter des programmes en parallèle?
 
-La blockchain est un ledger distribué qui enregistre une variété de données d'état et des règles régissant via les changements d'état de ces données. Les "Smart Contracts" sont utilisés comme transporteurs pour enregistrer ces règles. La "blockchains" peut traiter des programmes en parallèle, seulement si plusieurs "Smart COntracts" peuvent être exécutés simultanément et de manière non séquentielle. Fondamentalement, si les contrats n'interagissent pas les uns avec les autres, ou si le contrat ne modifie pas les mêmes données d'état en même temps, leur exécution est non séquentielle et peut être exécutée simultanément. Sinon, il ne peut s'exécuter qu'en série, suivant un ordre séquentiel, et le réseau ne peut pas évoluer horizontalement.
+La blockchain est un ledger distribué qui enregistre une variété de données d'état et des règles régissant via les changements d'état de ces données. Les "Smart Contracts" sont utilisés comme transporteurs pour enregistrer ces règles. La "blockchains" peut traiter des programmes en parallèle, seulement si plusieurs "Smart Contracts" peuvent être exécutés simultanément et de manière non séquentielle. Fondamentalement, si les contrats n'interagissent pas les uns avec les autres, ou si le contrat ne modifie pas les mêmes données d'état en même temps, leur exécution est non séquentielle et peut être exécutée simultanément. Sinon, il ne peut s'exécuter qu'en série, suivant un ordre séquentiel, et le réseau ne peut pas évoluer horizontalement.
 
 Sur la base de l'analyse ci-dessus, nous pouvons facilement concevoir une «mise à l'échelle illimitée» dans les systèmes de "Smart Contract. Tout ce que nous devons faire est de mettre en place des règles simples:
 
@@ -79,13 +79,13 @@ Sur la base de l'analyse ci-dessus, nous pouvons facilement concevoir une «mise
 
  * **Dans le même lot de transaction (bloc), un contrat ne peut être exécuté qu'une fois**
 
-Par conséquent, tous les "Smart Contract" peuvent être traités en parallèle car l'ordre séquentiel n'est pas pertinent pour le résultat. Toutefois, si un «Smart contract ne peut modifier que l'enregistrement d'état du contrat auquel il appartient», cela implique que les contrats ne peuvent pas s'appeler entre eux. Chaque contrat, est une île isolée; si "Dans le même lot de transactions (bloc), un contrat ne peut être exécuté qu'une seule fois", cela signifie qu'un actif numérique émis avec un "Smart Contract" ne peut gérer qu'une seule transaction par bloc. C'est un monde de différence avec les objectifs de conception originaux des "Smart Contracts", qui cessent d'être «intelligents». Après tout, nos objectifs de conception incluent à la fois l'appel mutuel entre les contrats, et l'exécution multiple du même appel, dans le même bloc.
+Par conséquent, tous les "Smart Contracts" peuvent être traités en parallèle car l'ordre séquentiel n'est pas pertinent pour le résultat. Toutefois, si un "Smart contract" ne peut modifier que l'enregistrement d'état du contrat auquel il appartient, cela implique que les contrats ne peuvent pas s'appeler entre eux. Chaque contrat, est une île isolée; si "Dans le même lot de transactions (bloc), un contrat ne peut être exécuté qu'une seule fois", cela signifie qu'un actif numérique émis avec un "Smart Contract" ne peut gérer qu'une seule transaction par bloc. C'est un monde de différence avec les objectifs de conception originaux des "Smart Contracts", qui cessent d'être «intelligents». Après tout, nos objectifs de conception incluent à la fois l'appel mutuel entre les contrats, et l'exécution multiple du même appel, dans le même bloc.
 
 Heureusement, les "Smart Contracts" dans NEO ont une relation d'appel statique et la cible d'appel ne peut pas être spécifiée au moment de l'exécution. Cela permet au comportement du programme d'être entièrement déterminé avant l'exécution, et sa relation d'appel à être entièrement définie avant de pouvoir s'exécuter. Nous exigeons que chaque contrat indique explicitement les contrats susceptibles d'être invoqués, afin que l'environnement d'exploitation puisse calculer l'arborescence complète avant d'exécuter la procédure de contrat, et partitionner l'exécution des contrats, en fonction de l'arborescence d'appel. Les contrats qui peuvent modifier le même enregistrement d'état sont exécutés de manière séquentielle dans la même partition, ce qui permet d'exécuter différentes partitions en parallèle.
 
 #### 2.3.2 Couplage faible
 
-Le couplage est une mesure de la dépendance entre deux ou plusieurs entités. Le système NeoContract utilise une conception à faible couplage, qui est exécutée dans la NeoVM, et communique avec les données non blockchain via la couche de service interopérable. En conséquence, la plupart des mises à niveau des fonctions de "Smart COntract" peuvent être réalisées en augmentant l'API des services interopérables.
+Le couplage est une mesure de la dépendance entre deux ou plusieurs entités. Le système NeoContract utilise une conception à faible couplage, qui est exécutée dans la NeoVM, et communique avec les données non blockchain via la couche de service interopérable. En conséquence, la plupart des mises à niveau des fonctions de "Smart Contract" peuvent être réalisées en augmentant l'API des services interopérables.
 
 ## 3. Utilisation du contrat
 
@@ -95,23 +95,26 @@ Contrairement au système de compte à clé publique utilisé dans Bitcoin, le s
 
 L'utilisateur peut préalablement déployer le contrat de vérification dans la blockchain ou publier le contenu du contrat directement dans la transaction pendant le processus de transfert.
 
-### 3.2 Contract Application
-
-The application contract is triggered by a special transaction, which can access and modify the global state of the system, and the private state of the contract (storage area) at run time. For example, you can create a global digital asset in a contract, vote, save data, and even dynamically create a new contract, when the contract is running.
-
-The execution of the application contract requires charging by instruction. When the transaction fee is consumed, the contract will fail and stop execution, and all state changes will be rolled back. The success of the contract does not affect the validity of the transaction.
-
-### 3.3 Contrat d'application
+### 3.2 Contrat d'application
 
 Le contrat d'application est déclenché par une transaction spéciale, qui peut accéder et modifier l'état global du système et l'état privé du contrat (zone de stockage) au moment de l'exécution. Par exemple, vous pouvez créer un actif numérique global dans un contrat, voter, enregistrer des données et même créer dynamiquement un nouveau contrat, lorsque le contrat est en cours d'exécution.
 
 L'exécution du contrat d'application nécessite une facturation par instruction. Lorsque les frais de transaction sont consommés, le contrat échoue et arrête l'exécution, et tous les changements d'état seront annulés. Le succès du contrat n'affecte pas la validité de la transaction.
 
+### 3.3 Fonction de contrat
+
+
+### 3.3 Fonction de contrat
+
+Le contrat de fonction est utilisé pour fournir certaines fonctions publiques ou couramment utilisées, qui peuvent être appelées par d'autres contrats. Le code du "Smart Contract" peut être réutilisé afin que les développeurs puissent écrire une logique métier de plus en plus complexe. Chaque contrat de fonction, lorsqu'il est déployé, peut choisir d'avoir une zone de stockage privée qui est soit lue, soit écrite dans des données dans un contrat futur, obtenant la persistance d'état.
+
+Le contrat de fonction doit être pré-déployé sur la chaîne à invoquer, et retiré de la chaîne par une fonction système «autodestructrice», qui ne sera plus utilisée et son stockage privé sera détruit. Les anciennes données de contrat peuvent être automatiquement migrées vers un autre sous-contrat avant d'être détruit, en utilisant des outils de migration de contrat.
+
 ## 4. Machine virtuelle
 
 ### 4.1 Matériel virtuel
 
-NeoVM fournit une couche matérielle virtuelle pour prendre en charge l'exécution de "Smart COntracts", notamment:
+NeoVM fournit une couche matérielle virtuelle pour prendre en charge l'exécution de "Smart Contracts", notamment:
 
  * **CPU**
 
@@ -142,7 +145,7 @@ NeoVM fournit un ensemble d'instructions simples et pratiques pour la constructi
  * Instruction cryptographique
  * Instruction d'opération de données
 
-Il convient de noter que le jeu d'instructions NeoVM fournit une série d'instructions cryptographiques, telles que ECDSA, SHA et d'autres algorithmes pour optimiser l'efficacité de la mise en œuvre des algorithmes cryptographiques dans les "Smart Contract". En outre, les instructions de manipulation de données prennent directement en charge les tableaux et les structures de données complexes.
+Il convient de noter que le jeu d'instructions NeoVM fournit une série d'instructions cryptographiques, telles qu’ECDSA, SHA et d'autres algorithmes pour optimiser l'efficacité de la mise en œuvre des algorithmes cryptographiques dans les "Smart Contract". En outre, les instructions de manipulation de données prennent directement en charge les tableaux et les structures de données complexes.
 
 ### 4.3 Couche de service interopérable
 
@@ -156,19 +159,19 @@ Souvent, le développement de "Smart Contract" est très difficile, en raison du
 
 ### 5.1 C#, VB.Net, F#
 
-Les développeurs peuvent utiliser NeoContract pour presque tous les langages de haut niveau auxquels ils sont habitués. Le premier lot de langages pris en charge est C #, VB.Net, F #, etc. Nous fournissons des compilateurs et des plug-ins pour ces langages, permettant la compilation de ces langages de haut niveau dans le jeu d'instructions, supporté par NeoVM . Comme le compilateur se concentre sur MSIL (langage intermédiaire Microsoft) lors de la compilation, donc théoriquement, tout les langages .net peuvent être traduits en langage MSIL et être directement pris en charge.
+Les développeurs peuvent utiliser NeoContract pour presque tous les langages de haut niveau auxquels ils sont habitués. Le premier lot de langages pris en charge est C#, VB.Net, F#, etc. Nous fournissons des compilateurs et des plug-ins pour ces langages, permettant la compilation de ces langages de haut niveau dans le jeu d'instructions, supporté par NeoVM . Comme le compilateur se concentre sur MSIL (langage intermédiaire Microsoft) lors de la compilation, donc théoriquement, tous les langages .net peuvent être traduits en langage MSIL et être directement pris en charge.
 
 Un grand nombre de développeurs maîtrisent ces langages, et les langages ci-dessus ont un très fort environnement de développement intégré. Les développeurs peuvent développer, générer, tester et déboguer, dans Visual Studio, où ils sont en mesure de tirer pleinement parti des modèles de développement de "Smart Contract" que nous fournissons pour prendre de l'avance.
 
 ### 5.2 Java, Kotlin
 
-Java et Kotlin forment le deuxième groupe de langages supportés, où nous fournissons des compilateurs et des plugins IDE pour ces langages, pour aider les développeurs à utiliser le langage JVM pour développer les applications Smart Contract de NEO.
+Java et Kotlin forment le deuxième groupe de langages supportés, où nous fournissons des compilateurs et des plugins IDE pour ces langages, pour aider les développeurs à utiliser le langage JVM pour développer les applications "Smart Contract" de NEO.
 
 Java est largement utilisé, et Kotlin est récemment devenu le langage de développement Android recommandé par Google. Nous croyons que le soutien à ces langage aidera à augmenter considérablement le nombre de développeurs de "Smart Contract" NEO.
 
 ### 5.3 Autres langues
 
-Par la suite, NeoContract ajoutera un support pour d'autres langages de haut niveau, basé sur le degré de difficulté, dans le processus de développement de complier. Certains des langages pouvant être prises en charge sont:
+Par la suite, NeoContract ajoutera un support pour d'autres langages de haut niveau, basé sur le degré de difficulté, dans le processus de développement de compiler. Certains des langages pouvant être prises en charge sont:
 
  * C, C++, GO
  * Python, JavaScript
@@ -181,7 +184,7 @@ Par la suite, NeoContract ajoutera un support pour d'autres langages de haut niv
 
 Les "Smart Contracts" NEO peuvent obtenir des données de bloc complètes pour la "blockchain" NEO, y compris les blocs complets et les transactions, et chacun de leurs champs, lors de l'exécution, via les fonctions système fournies par le service interopérable. Plus précisément, vous pouvez interroger ces données:
 
- * Hauteur de la blockchain
+ * Hauteur de la "blockchain"
  * Tête de bloc, bloc actuel
  * Transactions
  * Type de transaction, attributs, entrée, sortie, etc.
@@ -214,11 +217,11 @@ Les requêtes "Cross-domain" permettent à NeoContract d'implémenter des foncti
 
 ### 7.1 Frais de déploiement
 
-L'architecture distribuée de NEO fournit une redondance élevée de la capacité de stockage, et l'utilisation de cette capacité n'est pas gratuite. Le déploiement d'un "Smart Contract" sur le réseau NEO nécessite une redevance, actuellement fixée à 500GAS, qui est collectée par le système et enregistrée comme gain du système. Les frais futurs seront ajustés en fonction des coûts d'exploitation réels dans le système. Le "Smart Contract" déployé sur la blockchain peut être utilisé plusieurs fois, jusqu'à ce que le contrat soit détruit par le déployeur.
+L'architecture distribuée de NEO fournit une redondance élevée de la capacité de stockage, et l'utilisation de cette capacité n'est pas gratuite. Le déploiement d'un "Smart Contract" sur le réseau NEO nécessite une redevance, actuellement fixée à 500 GAS, qui est collectée par le système et enregistrée comme gain du système. Les frais futurs seront ajustés en fonction des coûts d'exploitation réels dans le système. Le "Smart Contract" déployé sur la "blockchain" peut être utilisé plusieurs fois, jusqu'à ce que le contrat soit détruit par le déployeur.
 
 ### 7.2 Frais de mise en œuvre
 
-NEO fournit un environnement d'exécution crédible pour les "Smart Contracts", et l'exécution des contrats nécessite la consommation de ressources informatiques pour chaque nœud, les utilisateurs sont donc tenus de payer pour l'exécution de "Smart Contracts". Les frais sont déterminés par les ressources de calcul consommées à chaque exécution, et le prix unitaire est également dans GAS. Si l'implémentation du "Smart Contract" échoue en raison d'un manque de GAS, le coût de la consommation ne sera pas remboursé, ce qui prévient les attaques malveillantes sur la consommation électrique du réseau.
+NEO fournit un environnement d'exécution crédible pour les "Smart Contracts", et l'exécution des contrats nécessite la consommation de ressources informatiques pour chaque nœud, les utilisateurs sont donc tenus de payer pour l'exécution de "Smart Contracts". Les frais sont déterminés par les ressources de calcul consommées à chaque exécution, et le prix unitaire est également en GAS. Si l'implémentation du "Smart Contract" échoue en raison d'un manque de GAS, le coût de la consommation ne sera pas remboursé, ce qui prévient les attaques malveillantes sur la consommation électrique du réseau.
 
 Pour la plupart des contrats simples, ils peuvent être exécutés gratuitement, tant que les coûts d'exécution restent inférieurs à 10 GAS, réduisant ainsi considérablement les coûts pour l'utilisateur.
 
@@ -247,18 +250,16 @@ Nest est un projet de fonds intelligent basé sur NeoContract, qui est très sim
 
 Dans un avenir prévisible, il y aura de nombreuses chaînes publiques et des milliers de chaînes d'alliance ou de chaînes privées dans le monde entier. Ces systèmes de blockchain isolés sont des îlots de valeurs et d'informations qui ne sont pas interopérables entre eux. Grâce au mécanisme d'interopérabilité entre chaînes, de nombreuses chaînes de blocs isolées peuvent être reliées entre elles, de sorte que les valeurs des différentes chaînes de blocs peuvent être échangées les unes avec les autres, afin d'obtenir la véritable valeur d'Internet.
 
-NeoContract provides support for the implementation of cross-chain interoperability, ensuring consistency within cross-chain asset exchange, cross-chain distributed transactions, and execution of smart contracts on different blockchains.
-
-NeoContract fournit un support pour la mise en œuvre de l'interopérabilité "cross-chain", assurant la cohérence au sein de l'échange "cross-chain" d'actifs, des transactions distribuées cross-chain, et l'exécution de "Smart Contracts" sur différentes blockchains.
+NeoContract fournit un support pour la mise en œuvre de l'interopérabilité "cross-chain", assurant la cohérence au sein de l'échange "cross-chain" d'actifs, des transactions distribuées "cross-chain", et l'exécution de "Smart Contracts" sur différentes "blockchains".
 
 ### 8.4 Machines Oracle
 
-Le concept d'oracles dans le conte populaire réside dans la capacité d'une certaine entité surnaturelle qui peut répondre à un ensemble particulier de questions. Dans la blockchain, les machines Oracle ouvrent la porte au monde extérieur pour les "Smart Contracts", ce qui permet aux "Smart Contracts" d'utiliser l'information réelle comme condition de l'exécution du contrat.
+Le concept d'oracles dans le conte populaire réside dans la capacité d'une certaine entité surnaturelle qui peut répondre à un ensemble particulier de questions. Dans la "blockchain", les machines Oracle ouvrent la porte au monde extérieur pour les "Smart Contracts", ce qui permet aux "Smart Contracts" d'utiliser l'information réelle comme condition de l'exécution du contrat.
 
-NeoContract n'offre pas la possibilité d'accéder directement aux données externes, telles que l'accès aux ressources sur Internet, car cela introduirait un comportement non déterministe, ce qui entraînerait des incohérences entre les nœuds lors de l'exécution du contrat. L'implémentation de la machine Oracle dans NeoContract nécessite que des données externes soient envoyées à la blockchain par un tiers de confiance, intégrant ces flux de données dans le ledger blockchain, éliminant ainsi le non-déterminisme.
+NeoContract n'offre pas la possibilité d'accéder directement aux données externes, telles que l'accès aux ressources sur Internet, car cela introduirait un comportement non déterministe, ce qui entraînerait des incohérences entre les nœuds lors de l'exécution du contrat. L'implémentation de la machine Oracle dans NeoContract nécessite que des données externes soient envoyées à la "blockchain" par un tiers de confiance, intégrant ces flux de données dans le "ledger blockchain", éliminant ainsi le non-déterminisme.
 
 La tierce partie crédible mentionnée ci-dessus peut être une personne ou une institution qui est co-confiée par les deux parties dans le contrat, ou un fournisseur de données décentralisé qui est garanti par des incitations économiques. De cette manière, NeoContract peut être utilisé dans la mise en œuvre de telles machines Oracle.
 
 ### 8.5 Ethereum DAPP
 
-Bitcoin a créé l'ère des blockchains et de l'argent électronique et Ethereum a créé l'ère des "Smart Contract". Ethereum, pionniers du smart contract sur la blockchain, a largement contribué à l'idée de design, au modèle économique et à la réalisation technologique d'un système de "Smart Contract". Dans le même temps, la plate-forme Ethereum a vu de nombreux DAPP (applications distribuées), où les fonctionnalités suivantes: accords de jeu, actifs numériques, or électronique, plate-forme de jeu, assurance médicale, plateforme de mariage, avec une utilisation répandue sur de nombreuses industries. En théorie, tous ces DAPP peuvent être facilement transplantés sur la plate-forme NeoContract, en tant qu'application NEO.
+Bitcoin a créé l'ère des blockchains et de l'argent électronique et Ethereum a créé l'ère des "Smart Contract". Ethereum, pionniers du "Smart Contract" sur la blockchain, a largement contribué à l'idée de design, au modèle économique et à la réalisation technologique d'un système de "Smart Contract". Dans le même temps, la plate-forme Ethereum a vu de nombreux DAPP (applications distribuées), où les fonctionnalités suivantes: accords de jeu, actifs numériques, or électronique, plate-forme de jeu, assurance médicale, plateforme de mariage, avec une utilisation répandue sur de nombreuses industries. En théorie, tous ces DAPP peuvent être facilement transplantés sur la plate-forme NeoContract, en tant qu'application NEO.
