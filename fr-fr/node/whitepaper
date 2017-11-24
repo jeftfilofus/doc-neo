@@ -12,19 +12,19 @@ Cet article propose un algorithme amélioré de tolérance aux fautes byzantines
 
 Une blockchain est un système décentralisé de ledger distribué. Elle pourrait être utilisée pour l'enregistrement et l'émission d'actifs numérisés, de certificats de propriété, de points de crédit, etc. Elle permet le transfert et le paiement des transactions d'une manière peer-to-peer. La technologie blockchain a été initialement proposée par Satoshi Nakamoto dans une liste de diffusion de cryptographie, c'est-à-dire le Bitcoin. Depuis de nombreuses applications basées sur la blockchain sont apparues, telles que les systèmes d'e-cash, les bourses d'actions et les systèmes Smart Contract.
 
-Un système "blockchain" est avantageux par rapport à un système de comptabilité centralisé traditionnel pour ses caractères d'ouverture totale, d'immuabilité et d'anti-dépenses multiples, et il ne repose sur aucune sorte de tiers de confiance.
+Un système blockchain est avantageux par rapport à un système de comptabilité centralisé traditionnel pour ses caractères d'ouverture totale, d'immuabilité et d'anti-dépenses multiples, et il ne repose sur aucune sorte de tiers de confiance.
 
-Cependant, comme tous les systèmes distribués, les systèmes "blockchain" sont confrontés à des problèmes de latence de réseau, d'erreurs de transmission, de bugs logiciels, de failles de sécurité et de menaces de hackers à chapeau noir. De plus, sa nature décentralisée suggère qu'aucun participant du système ne peut être fiable. Des nœuds malveillants peuvent apparaître, ainsi que des différences de données dues à des conflits d'intérêts.
+Cependant, comme tous les systèmes distribués, les systèmes blockchain sont confrontés à des problèmes de latence de réseau, d'erreurs de transmission, de bugs logiciels, de failles de sécurité et de menaces de hackers à chapeau noir. De plus, sa nature décentralisée suggère qu'aucun participant du système ne peut être fiable. Des nœuds malveillants peuvent apparaître, ainsi que des différences de données dues à des conflits d'intérêts.
 
-Pour contrer ces erreurs potentielles, un système blockchain a besoin d'un mécanisme de consensus efficace pour s'assurer que chaque nœud a une copie d'une version reconnue du grand livre. Les mécanismes traditionnels de tolérance aux fautes concernant certains problèmes peuvent ne pas être complètement capables de résoudre le problème auquel sont confrontés les systèmes distribués et les blockchain. Une solution de tolérance universelle aux pannes est nécessaire.
+Pour contrer ces erreurs potentielles, un système blockchain a besoin d'un mécanisme de consensus efficace pour s'assurer que chaque nœud possède une copie d'une version reconnue du grand livre. Les mécanismes traditionnels de tolérance aux fautes concernant certains problèmes peuvent ne pas être complètement capables de résoudre le problème auquel sont confrontés les systèmes distribués et les blockchains. Une solution de tolérance universelle aux pannes est nécessaire.
 
-Le mécanisme de preuve de travail [1], employé par le Bitcoin, aborde ce problème de manière plutôt brillante. Mais cela a un prix, c'est-à-dire un coût d'électricité et une consommation d'énergie importants. En outre, avec l'existence de Bitcoin, les nouvelles "blockchains" doivent trouver différents algorithmes de hachage, de manière à empêcher les attaques par calcul. Par exemple, Litecoin adopte SCRYPT, plutôt que SHA256 de Bitcoin.
+Le mécanisme de preuve de travail [1], employé par le Bitcoin, aborde ce problème de manière plutôt brillante. Mais cela a un prix, c'est-à-dire un coût d'électricité et une consommation d'énergie importants. En outre, avec l'existence de Bitcoin, les nouvelles blockchains doivent trouver différents algorithmes de hachage, de manière à empêcher les attaques par calcul. Par exemple, Litecoin adopte SCRYPT, plutôt que SHA256 de Bitcoin.
 
 Le mécanisme de tolérance aux fautes byzantines est une solution universelle pour les systèmes distribués [5]. Dans cet article, basé sur la Tolérance de Faute Byzantine Pratique (PBFT) [3] proposée par Castro et Liskov en 1999, un algorithme amélioré de tolérance aux fautes byzantines est proposé pour les systèmes blockchain.
 
 ## Modèle du système
 
-Une blockchain est un système de ledger distribué dans lequel les participants se connectent les uns aux autres via un réseau peer-to-peer. Tous les messages qu'il contient seront envoyés par diffusion. Deux types de rôles existent: les noeuds ordinaires et les noeuds de comptabilité. Les nœuds ordinaires utilisent le système pour transférer et échanger, en acceptant les données du grand livre; tandis que les noeuds de comptabilité fournissent un service de comptabilité pour l'ensemble du réseau et maintiennent le registre.
+Une blockchain est un système de ledger distribué dans lequel les participants se connectent les uns aux autres via un réseau peer-to-peer. Tous les messages qu'il contient seront envoyés par diffusion. Deux types de rôles existent: les nœuds ordinaires et les nœuds de comptabilité. Les nœuds ordinaires utilisent le système pour transférer et échanger, en acceptant les données du grand livre; tandis que les nœuds de comptabilité fournissent un service de comptabilité pour l'ensemble du réseau et maintiennent le registre.
 
 Hypothétiquement, dans ce système, les messages peuvent subir des pertes, des dommages, des temps de latence et des répétitions. En outre, l'ordre d'envoi n'est pas nécessairement cohérent avec l'ordre de réception des messages. Les activités des nœuds peuvent être arbitraires, ils peuvent rejoindre et quitter le réseau à tout moment; ils peuvent aussi jeter et falsifier des informations ou simplement cesser de travailler. Des problèmes artificiels ou non artificiels peuvent également survenir.
 
@@ -32,27 +32,27 @@ L'intégrité et l'authenticité de la transmission de l'information sont assur�
 
 ## L'algorithme
 
-Notre algorithme assure la sécurité ainsi que la convivialité. Avec des nœuds erronés dans le consensus ne faisant pas plus de ⌊ (𝑛-1) / 3 ⌋, la fonctionnalité et la stabilité du système sont garanties. Dans cela, 𝑛 = | 𝑅 | suggère le nombre total de nœuds rejoints dans la prise de consensus alors que R représente l'ensemble des nœuds de consensus. Étant donné que 𝑓 = ⌊ (𝑛-1) / 3 ⌋, f représente le nombre maximal de nœuds erronés autorisés dans le système. En fait, le grand livre entier est maintenu par des noeuds de comptabilité tandis que les noeuds ordinaires ne participent pas à la prise de consensus. Ceci est pour montrer l'ensemble des procédures de prise de consensus.
+Notre algorithme assure la sécurité ainsi que la convivialité. Avec des nœuds erronés dans le consensus ne faisant pas plus de ⌊ (𝑛-1) / 3 ⌋, la fonctionnalité et la stabilité du système sont garanties. Dans cela, 𝑛 = | 𝑅 | suggère le nombre total de nœuds rejoints dans la prise de consensus alors que R représente l'ensemble des nœuds de consensus. Étant donné que 𝑓 = ⌊ (𝑛-1) / 3 ⌋, f représente le nombre maximal de nœuds erronés autorisés dans le système. En fait, le grand livre entier est maintenu par des nœuds de comptabilité tandis que les nœuds ordinaires ne participent pas à la prise de consensus. Ceci est pour montrer l'ensemble des procédures de prise de consensus.
 
 Tous les nœuds de consensus sont tenus de maintenir une table d'état pour enregistrer l'état du consensus actuel. L'ensemble de données utilisé pour un consensus de son début à sa fin est appelé une vue. Si le consensus ne peut être atteint dans la vue actuelle, un changement de vue sera nécessaire. Nous identifions chaque vue avec un nombre v, à partir de 0 et il peut augmenter jusqu'à atteindre le consensus.
 
 Nous identifions chaque nœud de consensus avec un nombre, à partir de 0, le dernier nœud est numéroté n - 1. Pour chaque ronde de consensus, un nœud joue le locuteur de la maison tandis que les autres nœuds jouent au Congrès. Le nombre p du locuteur sera déterminé par l'algorithme suivant: Hypothétiquement, la hauteur du bloc courant est h, alors 𝑝 = (ℎ - 𝑣) 𝑚𝑜𝑑 𝑛, la plage de valeurs de p sera 0 ≤ 𝑝 <𝑛.
 
-Un nouveau bloc sera généré avec chaque ronde de consensus, avec au moins 𝑛 - 𝑓 signatures des noeuds de comptabilité. Lors de la génération d'un bloc, un nouveau cycle de prise de consensus doit commencer, en réinitialisant v = 0.
+Un nouveau bloc sera généré avec chaque ronde de consensus, avec au moins 𝑛 - 𝑓 signatures des nœuds de comptabilité. Lors de la génération d'un bloc, un nouveau cycle de prise de consensus doit commencer, en réinitialisant v = 0.
 
 ###  Procédures générales
 
-En définssant les intervalles de temps de génération de blocs comme t, dans des circonstances normales, l'algorithme s'exécute dans les procédures suivantes:
+En définissant les intervalles de temps de génération de blocs comme t, dans des circonstances normales, l'algorithme s'exécute dans les procédures suivantes:
 
-1) un noeud diffuse des données de transaction sur l'ensemble du réseau, joint à la signature de l'expéditeur;
+1) un nœud diffuse des données de transaction sur l'ensemble du réseau, joint à la signature de l'expéditeur;
 
-2) tous les noeuds de comptabilité surveillent la diffusion des données de transaction indépendamment et stockent les données dans leur mémoire respectivement;
+2) tous les nœuds de comptabilité surveillent la diffusion des données de transaction indépendamment et stockent les données dans leur mémoire respectivement;
 
 3) Après le temps t, le locuteur envoie <𝑃𝑒𝑟𝑝𝑎𝑟𝑒𝑅𝑒𝑞𝑢𝑒𝑠𝑡, ℎ, 𝑣, 𝑝, 𝑏𝑙𝑜𝑐𝑘, <𝑏𝑙𝑜𝑐𝑘> <sub> σ𝑝 </ sub >>;
 
 4) Après réception de la proposition, les membres du Congrès envoient <𝑃𝑒𝑟𝑝𝑎𝑟𝑒𝑅𝑒𝑠𝑝𝑜𝑛𝑠𝑒, ℎ, 𝑣, 𝑖, <𝑏𝑙𝑜𝑐𝑘> <sub> σ𝑖 </ sub >>;
 
-​5) Tout nœud, lorsqu'il reçoit au moins 𝑛 - 𝑓 <𝑏𝑙𝑜𝑐𝑘> <sub> σ𝑖 </ sub>, parvient à un consensus et publie un bloc complet;
+5) Tout nœud, lorsqu'il reçoit au moins 𝑛 - 𝑓 <𝑏𝑙𝑜𝑐𝑘> <sub> σ𝑖 </ sub>, parvient à un consensus et publie un bloc complet;
 
 6) Tout nœud, après avoir reçu le bloc complet, supprime la transaction en question de sa mémoire et commence le tour suivant le consensus;
 
@@ -76,10 +76,9 @@ Si, après 2 <sup> 𝑣 + 1 </ sup> ⋅ 𝑡 intervalle de temps, les nœuds ne 
 
 1) Étant donné k = 1, 𝑣 <sub> 𝑘 </ sub> = 𝑣 + 𝑘;
 
-2) Les noeuds i j'envoient "View Change request" <𝐶ℎ𝑎𝑛𝑔𝑒𝑉𝑖𝑒𝑤, ℎ, 𝑣, 𝑖, 𝑣 <sub> 𝑘 </ sub >>;
+2) Les nœuds i envoient "View Change request" <𝐶ℎ𝑎𝑛𝑔𝑒𝑉𝑖𝑒𝑤, ℎ, 𝑣, 𝑖, 𝑣 <sub> 𝑘 </ sub >>;
 
-3) Lorsqu'un nœud reçoit au moins 𝑛 - 𝑓 même v <sub> k </ sub> d'un i différent, le changement d'affichage est
-   terminé. Définissez 𝑣 = 𝑣 <sub> 𝑘 </ sub> et la prise de consensus commence;
+3) Lorsqu'un nœud reçoit au moins 𝑛 - 𝑓 même v <sub> k </ sub> d'un i différent, le changement d'affichage est terminé. Définissez 𝑣 = 𝑣 <sub> 𝑘 </ sub> et la prise de consensus commence;
 
 4) Si, après 2 <sup> 𝑣 + 1 </ sup> ⋅ 𝑡 intervalle de temps, le changement de vue n'est pas terminé, le k augmentera et retournera à l'étape 2);
 
@@ -93,12 +92,12 @@ Avant la fin de la modification de la vue, la vue v d'origine est toujours valid
 
 ## Capacité de tolérance aux pannes
 
-Notre algorithme fournit _f_ = ⌊ (𝑛-1) / 3 tolérance aux pannes à un système de consensus qui comprend n nœuds. Cette capacité de tolérance inclut la sécurité et la convivialité et est une suite pour tout environnement réseau.
+Notre algorithme fournit _f_ = ⌊ (𝑛-1) / 3 tolérance aux pannes à un système de consensus qui comprend n nœuds. Cette capacité de tolérance inclut la sécurité, la convivialité et est une suite pour tout environnement réseau.
 
-Les données de requête provenant de noeuds contiennent des signatures d'expéditeur, de sorte que les noeuds de tenue de livres malveillants ne peuvent pas falsifier les demandes. Au lieu de cela, ils essaieront de revenir sur l'état du système, forçant le système à s'interrompre.
+Les données de requête provenant de nœuds contiennent des signatures d'expéditeur, de sorte que les nœuds de tenue de livres malveillants ne peuvent pas falsifier les demandes. Au lieu de cela, ils essaieront de revenir sur l'état du système, forçant le système à s'interrompre.
 
 Hypothétiquement, dans l'environnement réseau du système, les nœuds de consensus sont divisés en trois parties: 𝑅 = 𝑅1 ∪ 𝑅2 ∪ 𝐹, et 𝑅1 ∩ 𝑅2 = ∅, 𝑅1 ∩ 𝐹 = ∅, 𝑅2 ∩ 𝐹 = ∅. Ainsi hypothétiquement,
-R1 et R2 sont tous deux des noeuds de tenue de livres honnêtes dans un silo d'information qui ne peuvent communiquer qu'avec les noeuds de leur ensemble; F sont tous des nœuds malveillants en coordination; de plus, la condition de réseau de F leur permet de communiquer avec n'importe quel nœud, y compris R1 et R2.
+R1 et R2 sont tous deux des nœuds de tenue de livres honnêtes dans un silo d'information qui ne peuvent communiquer qu'avec les nœuds  de leur ensemble; F sont tous des nœuds malveillants en coordination; de plus, la condition de réseau de F leur permet de communiquer avec n'importe quel nœud, y compris R1 et R2.
 Si F souhaite "forker" le système, il doit parvenir à un consensus avec R1 et publier des blocs, et
 puis atteindre un second consensus sans informer le R2, révoquant le consensus avec R1.
 Pour y parvenir, il faut que | 𝑅1 | + | 𝐹 | ≥ 𝑛 - 𝑓 et | 𝑅2 | + | 𝐹 | ≥ 𝑛 - 𝑓.
