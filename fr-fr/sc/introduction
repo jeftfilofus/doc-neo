@@ -2,30 +2,30 @@
 
 ## Qu'est-ce qu'un "Smart Contract"?
 
-Un "Smart Contract" est un ensemble d'engagements qui sont définis sous forme numérique, y compris l'accord sur la façon dont les participants au contrat doivent remplir ces engagements. La technologie Blockchain nous donne un système décentralisé, non falsifiable et très fiable dans lequel les "Smart Contracts" sont très utiles. Les "Smart Contracts" sont l'une des caractéristiques les plus importantes des technologies blockchain et la raison pour laquelle les blockchains peuvent être qualifiées de technologies perturbatrices. Il augmente l'efficacité de notre structure sociale chaque jour qui passe.
+Un "Smart Contract" est un ensemble d'engagements qui sont définis sous forme numérique, y compris sur la façon dont les participants au contrat doivent remplir ces engagements. La technologie "Blockchain" nous donne un système décentralisé, non falsifiable et très fiable dans lequel les "Smart Contracts" sont très utiles. Les "Smart Contracts" sont l'une des caractéristiques les plus importantes des technologies "blockchain" et la raison pour laquelle les "blockchains" peuvent être qualifiées de technologies perturbatrices. Il augmente l'efficacité de notre structure sociale chaque jour qui passe.
 
 ## Quelles sont les caractéristiques des "Smart Contracts" NEO ?
 
 Le NEO Smart Contract 2.0 inclut les fonctionnalités suivantes: certitude, haute performance et évolutivité. Les types de contrat comprennent: les contrats de validation, les contrats de fonction et les contrats d'application.
 
-Du point de vue des performances, NEO utilise la légère NeoVM (NEO Virtual Machine) comme environnement d'exécution de "SmartContract". Elle démarre très rapidement et prend une petite quantité de ressources et convient aux "SmartContract" tels que les procédures courtes. La compilation statique et la mise en cache des contrats peuvent être considérablement améliorées par la technologie JIT (compilateur en temps réel). La configuration pédagogique de la machine virtuelle NEO fournit une série d'instructions cryptographiques pour optimiser l'efficacité d'exécution des algorithmes cryptographiques dans les "SmartContract". En outre, les instructions de manipulation de données prennent directement en charge les tableaux et les structures de données complexes. Tout ce qui précède améliorera les performances du NEO Smart Contract 2.0.
+Du point de vue des performances, NEO utilise la légère NeoVM (NEO Virtual Machine) comme environnement d'exécution de "SmartContract". Elle démarre très rapidement, prend une petite quantité de ressources et convient aux "SmartContracts" tels que les procédures courtes. La compilation statique et la mise en cache des contrats peuvent être considérablement améliorées par la technologie JIT (compilateur en temps réel). La configuration pédagogique de la machine virtuelle NEO fournit une série d'instructions cryptographiques pour optimiser l'efficacité d'exécution des algorithmes cryptographiques dans les "SmartContracts". En outre, les instructions de manipulation de données prennent directement en charge les tableaux et les structures de données complexes. Tout ce qui précède améliorera les performances du NEO Smart Contract 2.0.
 
 NEO Smart Contract 2.0 atteint une approche évolutive grâce à une combinaison de haute simultanéité et de partitionnement dynamique, combinée à sa conception à faible couplage. La procédure de contrat à couplage faible est exécutée dans une machine virtuelle (machine virtuelle NEO) et communique avec l'extérieur via la couche de service interactive. Par conséquent, la grande majorité des mises à niveau de la fonction de "Smart Contract" peut être réalisée via l'API de la couche de service interactive.
 
 ## Rédiger des "Smart Contracts" dans n'importe quelle langue
 
-Du point de vue linguistique, la différence entre NEO Smart Contract 2.0 et Ethereum est plus intuitive: contrairement au langage Solidity dans Ethereum, le "Smart Contract" NEO peut être utilisé directement par presque n'importe quel langage de programmation de haut niveau. Les premiers langages pris en charge sont C #, VB.Net, F #, Java et Kotlin. NEO fournit des compilateurs et des plug-ins pour ces langages, qui sont utilisés pour compiler des langages de haut niveau dans des jeux d'instructions supportés par des machines virtuelles NEO. Le premier compilateur sera pour MSIL (langage intermédiaire de Microsoft), donc théoriquement tout langage .Net et tout langage qui peut être traduit en MSIL seront immédiatement supportés.
+Du point de vue linguistique, la différence entre NEO Smart Contract 2.0 et Ethereum est plus intuitive: contrairement au langage Solidity dans Ethereum, le "Smart Contract" NEO peut être utilisé directement par presque n'importe quel langage de programmation de haut niveau. Les premiers langages pris en charge sont C#, VB.Net, F#, Java et Kotlin. NEO fournit des compilateurs et des plug-ins pour ces langages, qui sont utilisés pour compiler des langages de haut niveau dans des jeux d'instructions supportés par des machines virtuelles NEO. Le premier compilateur sera pour MSIL (langage intermédiaire de Microsoft), donc théoriquement tout langage .Net et tout langage qui peut être traduit en MSIL seront immédiatement supportés.
 
-Les langues actuellement prises en charge sont:
+Les langages actuellement pris en charge sont:
 
 1) C#, VB.Net, F#
 2) Java, Kotlin
 
-Les langues que nous prévoyons d'inclure:
+Les langages que nous prévoyons d'inclure:
 
 1) C, C++, Golang
 2) Python, JavaScript
 
-Avec un support multilingue, plus de 90% des développeurs peuvent participer directement au développement d'un "Smart Contract" NEO sans avoir besoin d'apprendre une nouveau langage. Le code existant d'une entreprise peut même être directement porté sur la blockchain. Nous prévoyons que cela augmentera considérablement la popularité globale de la future blockchain.
+Avec un support multilingue, plus de 90% des développeurs peuvent participer directement au développement d'un "Smart Contract" NEO sans avoir besoin d'apprendre un nouveau langage. Le code existant d'une entreprise peut même être directement porté sur la "blockchain". Nous prévoyons que cela augmentera considérablement la popularité globale de la future "blockchain".
 
 De plus, les "Smart Contracts" traditionnels sont difficiles à déboguer et à tester étant donné le manque de supports, d'outils et d'accès à des instructions claires. Cependant, NEO fournit un support majeur pour le débogage au niveau de la machine virtuelle NEO, vous permettant de développer NEO Smart Contract 2.0 à la fois plus facilement et plus rapidement. Si vous avez besoin de TestNet GAS, n'hésitez pas à demander ouvertement et il sera fourni à des fins de développement.
